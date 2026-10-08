@@ -1,0 +1,838 @@
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #f8cedc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+
+/* =========================================
+   CORAZONES
+========================================= */
+
+.hearts {
+    height: 100px;
+    position: relative;
+    z-index: 3;
+}
+
+.hearts span {
+    position: absolute;
+    color: #d90025;
+    font-size: 55px;
+    animation: floating 2s ease-in-out infinite;
+}
+
+.hearts span:nth-child(1) {
+    left: 35%;
+    top: 20px;
+}
+
+.hearts span:nth-child(2) {
+    left: 45%;
+    top: 5px;
+    font-size: 70px;
+}
+
+.hearts span:nth-child(3) {
+    left: 55%;
+    top: 25px;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================================
+   POLAROIDS
+========================================= */
+
+.polaroids {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.polaroid {
+    position: absolute;
+    width: 125px;
+    height: 155px;
+    background: #fff;
+    padding: 8px 8px 25px;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .18);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 122px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* FOTO 1 */
+
+.p1 {
+    left: 90px;
+    top: 15px;
+    transform: rotate(-12deg);
+}
+
+
+/* FOTO 2 */
+
+.p2 {
+    right: 90px;
+    top: 5px;
+    transform: rotate(10deg);
+}
+
+
+/* FOTO 3 */
+
+.p3 {
+    left: 5px;
+    top: 180px;
+    transform: rotate(7deg);
+}
+
+
+/* FOTO 4 */
+
+.p4 {
+    right: 5px;
+    top: 195px;
+    transform: rotate(-9deg);
+}
+
+
+/* FOTO 5 */
+
+.p5 {
+    left: 130px;
+    top: 345px;
+    transform: rotate(10deg);
+}
+
+
+/* FOTO 6 */
+
+.p6 {
+    right: 125px;
+    top: 355px;
+    transform: rotate(-12deg);
+}
+
+
+/* =========================================
+   SOBRE
+========================================= */
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 190px;
+    margin: 0 auto 40px;
+    perspective: 1000px;
+    z-index: 10;
+}
+
+
+/* PARTE TRASERA */
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f27f98;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.letter {
+    position: absolute;
+
+    width: 280px;
+    height: 180px;
+
+    left: 50%;
+    top: 5px;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    z-index: 2;
+
+    padding: 25px;
+
+    transition: all 1s ease;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+}
+
+
+/* CONTENIDO */
+
+.letter-content {
+    opacity: 0;
+    transition: opacity .4s ease;
+
+    font-family: 'Playfair Display', serif;
+    color: #444;
+}
+
+.envelope.open .letter-content {
+    opacity: 1;
+}
+
+
+/* TÍTULO */
+
+.letter h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    color: #d85c7a;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+
+/* TEXTO */
+
+.letter p {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================
+   CARTA ABIERTA
+========================================= */
+
+.envelope.open .letter {
+    width: 280px;
+    height: 500px;
+
+    left: 50%;
+    top: -150px;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+}
+
+
+/* =========================================
+   PARTE FRONTAL DEL SOBRE
+========================================= */
+
+.front {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid #ed718d;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   SOLAPA
+========================================= */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #f58ca3;
+
+    transform-origin: top;
+
+    transition: transform 1s ease;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   CORAZÓN DEL SOBRE
+========================================= */
+
+.heart {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 50%;
+    top: 65px;
+
+    transform: translateX(-50%);
+
+    font-size: 45px;
+    color: #d90025;
+
+    transition: all .5s ease;
+}
+
+
+/* =========================================
+   ANIMACIÓN AL ABRIR
+========================================= */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .heart {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    position: relative;
+
+    z-index: 30;
+}
+
+button {
+    width: 90px;
+    height: 35px;
+
+    background: transparent;
+
+    border: 2px solid #dc7890;
+
+    color: #c95d77;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+button:hover {
+    background: #dc7890;
+    color: white;
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        min-height: 100vh;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+
+    /* =====================================
+       CONTENEDOR
+    ===================================== */
+
+    .container {
+        position: relative;
+
+        width: 100%;
+        max-width: 360px;
+
+        min-height: 750px;
+
+        margin: 0 auto;
+
+        padding: 0;
+
+        text-align: center;
+    }
+
+
+    /* =====================================
+       CORAZONES
+    ===================================== */
+
+    .hearts {
+        height: 75px;
+    }
+
+
+    .hearts span {
+        font-size: 40px;
+    }
+
+    .hearts span:nth-child(1) {
+        left: 32%;
+        top: 10px;
+    }
+
+    .hearts span:nth-child(2) {
+        left: 44%;
+        top: 0;
+        font-size: 55px;
+    }
+
+    .hearts span:nth-child(3) {
+        left: 56%;
+        top: 12px;
+    }
+
+
+    /* =====================================
+       SOBRE
+    ===================================== */
+
+    .envelope {
+        position: relative;
+
+        width: 280px;
+        height: 180px;
+
+        margin: 0 auto 35px;
+
+        left: 0;
+
+        z-index: 10;
+    }
+
+
+    /* =====================================
+       CARTA CERRADA
+    ===================================== */
+
+    .letter {
+
+        width: 250px;
+        height: 160px;
+
+        left: 50%;
+        top: 10px;
+
+        transform: translateX(-50%);
+
+        padding: 20px;
+
+        z-index: 2;
+    }
+
+
+    /* =====================================
+       CARTA ABIERTA
+    ===================================== */
+
+    .envelope.open .letter {
+
+
+        width: calc(100vw - 40px);
+        max-width: 340px;
+        height: 600px;
+        left: 50%;
+
+        top: -390px;
+
+        transform: translateX(-50%);
+
+        padding: 25px;
+
+        z-index: 20;
+
+        /*
+        Si el texto es demasiado largo,
+        permite desplazarse dentro
+        de la carta.
+        */
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    /* =====================================
+       CONTENIDO DE LA CARTA
+    ===================================== */
+
+    .letter-content {
+
+        opacity: 0;
+
+        transition: opacity .5s ease;
+    }
+
+
+    .envelope.open .letter-content {
+
+        opacity: 1;
+
+        transition-delay: .7s;
+    }
+
+
+    /* =====================================
+       TÍTULO EN CELULAR
+    ===================================== */
+
+    .letter h2 {
+
+        font-size: 18px;
+
+        margin-bottom: 16px;
+
+        text-align: center;
+    }
+
+
+    /* =====================================
+       TEXTO EN CELULAR
+    ===================================== */
+
+    .letter p {
+
+        font-size: 13px;
+
+        line-height: 1.55;
+
+        text-align: center;
+
+        white-space: pre-line;
+
+        overflow-wrap: break-word;
+
+        word-wrap: break-word;
+    }
+
+
+    /* =====================================
+       PARTE FRONTAL DEL SOBRE
+    ===================================== */
+
+    .front {
+
+        border-left-width: 140px;
+        border-right-width: 140px;
+
+        border-bottom-width: 95px;
+    }
+
+
+    /* =====================================
+       SOLAPA DEL SOBRE
+    ===================================== */
+
+    .flap {
+
+        border-left-width: 140px;
+        border-right-width: 140px;
+
+        border-top-width: 95px;
+    }
+
+
+    /* =====================================
+       CORAZÓN
+    ===================================== */
+
+    .heart {
+
+        top: 60px;
+
+        font-size: 40px;
+    }
+
+
+    /* =====================================
+       POLAROIDS
+    ===================================== */
+
+    .polaroids {
+
+        position: absolute;
+
+        width: 100%;
+        height: 520px;
+
+        top: 0;
+        left: 0;
+
+        transform: none;
+
+        z-index: 2;
+
+        pointer-events: none;
+    }
+
+
+    .polaroid {
+
+        width: 72px;
+        height: 94px;
+
+        padding: 5px 5px 15px;
+
+        box-shadow:
+            0 5px 14px rgba(0, 0, 0, .18);
+
+        z-index: 2;
+    }
+
+
+    .polaroid img {
+
+        width: 100%;
+        height: 73px;
+
+        object-fit: cover;
+    }
+
+
+    /* =====================================
+       FOTO 1
+    ===================================== */
+
+    .p1 {
+
+        left: 0;
+        top: 25px;
+
+        transform: rotate(-9deg);
+    }
+
+
+    /* =====================================
+       FOTO 2
+    ===================================== */
+
+    .p2 {
+
+        right: 0;
+        top: 20px;
+
+        transform: rotate(9deg);
+    }
+
+
+    /* =====================================
+       FOTO 3
+    ===================================== */
+
+    .p3 {
+
+        left: -3px;
+        top: 205px;
+
+        transform: rotate(7deg);
+    }
+
+
+    /* =====================================
+       FOTO 4
+    ===================================== */
+
+    .p4 {
+
+        right: -3px;
+        top: 215px;
+
+        transform: rotate(-7deg);
+    }
+
+
+    /* =====================================
+       FOTO 5
+    ===================================== */
+
+    .p5 {
+
+        left: 15px;
+        top: 390px;
+
+        transform: rotate(8deg);
+    }
+
+
+    /* =====================================
+       FOTO 6
+    ===================================== */
+
+    .p6 {
+
+        right: 15px;
+        top: 400px;
+
+        transform: rotate(-8deg);
+    }
+
+
+    /* =====================================
+       BOTONES
+    ===================================== */
+
+    .buttons {
+
+        position: relative;
+
+        z-index: 30;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 12px;
+
+        width: 100%;
+
+        margin-top: 10px;
+    }
+
+
+    button {
+
+        width: 85px;
+        height: 35px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
+
+@media (max-width: 360px) {
+
+    .container {
+        max-width: 320px;
+    }
+
+
+    .envelope {
+        width: 260px;
+    }
+
+
+    .front {
+
+        border-left-width: 130px;
+        border-right-width: 130px;
+    }
+
+
+    .flap {
+
+        border-left-width: 130px;
+        border-right-width: 130px;
+    }
+
+
+    .envelope.open .letter {
+
+        width: calc(100vw - 30px);
+
+        max-width: 330px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    .polaroid {
+
+        width: 65px;
+        height: 87px;
+    }
+
+
+    .polaroid img {
+
+        height: 67px;
+    }
+}
