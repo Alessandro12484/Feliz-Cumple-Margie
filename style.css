@@ -1,0 +1,519 @@
+
+.letter-content {
+    opacity: 0;
+    transition: opacity .4s ease;
+}.envelope.open .letter-content {
+    opacity: 1;
+}
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #f8cedc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* CORAZONES */
+
+.hearts {
+    height: 100px;
+    position: relative;
+}
+
+.hearts span {
+    position: absolute;
+    color: #d90025;
+    font-size: 55px;
+    animation: floating 2s ease-in-out infinite;
+}
+
+.hearts span:nth-child(1) {
+    left: 35%;
+    top: 20px;
+}
+
+.hearts span:nth-child(2) {
+    left: 45%;
+    top: 5px;
+    font-size: 70px;
+}
+
+.hearts span:nth-child(3) {
+    left: 55%;
+    top: 25px;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+
+/* =========================
+   6 POLAROIDS
+========================= */
+
+.polaroids {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.polaroid {
+    position: absolute;
+    width: 125px;
+    height: 155px;
+    background: #fff;
+    padding: 8px 8px 25px;
+    box-shadow: 0 7px 18px rgba(0,0,0,.18);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 122px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* 1 — arriba izquierda */
+.p1 {
+    left: 90px;
+    top: 15px;
+    transform: rotate(-12deg);
+}
+
+
+/* 2 — arriba derecha */
+.p2 {
+    right: 90px;
+    top: 5px;
+    transform: rotate(10deg);
+}
+
+
+/* 3 — izquierda */
+.p3 {
+    left: 5px;
+    top: 180px;
+    transform: rotate(7deg);
+}
+
+
+/* 4 — derecha */
+.p4 {
+    right: 5px;
+    top: 195px;
+    transform: rotate(-9deg);
+}
+
+
+/* 5 — abajo izquierda */
+.p5 {
+    left: 130px;
+    top: 345px;
+    transform: rotate(10deg);
+}
+
+
+/* 6 — abajo derecha */
+.p6 {
+    right: 125px;
+    top: 355px;
+    transform: rotate(-12deg);
+}
+
+
+/* =========================
+   POLAROIDS AL ABRIR
+========================= */
+
+.envelope.open ~ .polaroids .p1 {
+    transform: rotate(-17deg) translate(-12px, -8px);
+}
+
+.envelope.open ~ .polaroids .p2 {
+    transform: rotate(15deg) translate(12px, -10px);
+}
+
+.envelope.open ~ .polaroids .p3 {
+    transform: rotate(10deg) translate(-12px, 5px);
+}
+
+.envelope.open ~ .polaroids .p4 {
+    transform: rotate(-13deg) translate(12px, 8px);
+}
+
+.envelope.open ~ .polaroids .p5 {
+    transform: rotate(15deg) translate(-10px, 10px);
+}
+
+.envelope.open ~ .polaroids .p6 {
+    transform: rotate(-16deg) translate(10px, 12px);
+}
+
+
+/* SOBRE */
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 190px;
+    margin: 0 auto 40px;
+    perspective: 1000px;
+}
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f27f98;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+/* CARTA */
+
+.letter {
+    position: absolute;
+    width: 280px;
+    height: 180px;
+    left: 10px;
+    top: 5px;
+    background: white;
+    z-index: 2;
+    padding: 25px;
+    transition: all 1s ease;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+.letter-content {
+    font-family: 'Playfair Display', serif;
+    color: #444;
+}
+
+.letter h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    color: #d85c7a;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.letter p {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+/* SOBRE ABIERTO */
+
+.envelope.open .letter { 
+    width: 280px;
+    height: 500px;
+    left: 10px;
+    top: -200px;
+    transform: none;
+    z-index: 10;
+}
+
+/* PARTE FRONTAL */
+
+.front { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 0; 
+    height: 0; 
+    border-left: 150px solid transparent; 
+    border-right: 150px solid transparent; 
+    border-bottom: 100px solid #ed718d; 
+    z-index: 4; 
+}
+
+/* SOLAPA */
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #f58ca3;
+
+    transform-origin: top;
+    transition: transform 1s ease;
+    z-index: 5;
+}
+
+/* CORAZÓN DEL SOBRE */
+
+.heart {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 65px;
+    transform: translateX(-50%);
+    font-size: 45px;
+    color: #d90025;
+    transition: all .5s ease;
+}
+
+/* SOBRE ABIERTO */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .letter { 
+    transform: translateY(-150px); 
+    height: 500px; 
+    z-index: 10; 
+}
+
+.envelope.open .heart {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+}
+
+/* BOTONES */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+button {
+    width: 90px;
+    height: 35px;
+    background: transparent;
+    border: 2px solid #dc7890;
+    color: #c95d77;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #dc7890;
+    color: white;
+}
+
+/* CELULAR */
+
+@media (max-width: 500px) {
+
+    .envelope {
+        width: 280px;
+        height: 180px;
+    }
+
+    .front {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-bottom-width: 95px;
+    }
+
+    .flap {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 95px;
+    }
+
+    .letter {
+        width: 240px;
+        left: 20px;
+    }
+
+}
+
+/* =========================
+   ADAPTACIÓN PARA MÓVIL
+   ========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Sobre */
+    .envelope {
+        width: 280px;
+        height: 180px;
+        margin: 0 auto 35px;
+    }
+
+    /* Carta cerrada */
+    .letter {
+        width: 250px;
+        height: 160px;
+        left: 15px;
+        top: 10px;
+        padding: 20px;
+    }
+
+    /* Carta abierta */
+    .envelope.open .letter {
+        width: 270px;
+        height: 480px;
+        left: 5px;
+        top: -305px;
+        transform: none;
+        padding: 22px;
+        z-index: 10;
+    }
+
+    /* Ocultar contenido mientras está cerrada */
+    .letter-content {
+        opacity: 0;
+        transition: opacity .5s ease;
+    }
+
+    /* Mostrar contenido al abrir */
+    .envelope.open .letter-content {
+        opacity: 1;
+        transition-delay: .7s;
+    }
+
+    /* Título */
+    .letter h2 {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    /* Texto */
+    .letter p {
+        font-size: 13px;
+        line-height: 1.55;
+        white-space: pre-line;
+    }
+
+    /* Corazones superiores */
+    .hearts {
+        height: 80px;
+    }
+
+    .hearts span {
+        font-size: 42px;
+    }
+
+    .hearts span:nth-child(1) {
+        left: 28%;
+    }
+
+    .hearts span:nth-child(2) {
+        left: 43%;
+        font-size: 55px;
+    }
+
+    .hearts span:nth-child(3) {
+        left: 58%;
+    }
+
+    /* Botones */
+    .buttons {
+        gap: 10px;
+    }
+
+    button {
+        width: 85px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    /* Polaroids */
+    .polaroids {
+        width: 100%;
+        height: 430px;
+        top: 25px;
+    }
+
+    .polaroid {
+        width: 85px;
+        height: 108px;
+        padding: 6px 6px 18px;
+    }
+
+    .polaroid img {
+        height: 84px;
+    }
+
+    .p1 {
+        left: 5px;
+        top: 10px;
+        transform: rotate(-10deg);
+    }
+
+    .p2 {
+        right: 5px;
+        top: 5px;
+        transform: rotate(9deg);
+    }
+
+    .p3 {
+        left: -2px;
+        top: 160px;
+        transform: rotate(6deg);
+    }
+
+    .p4 {
+        right: -2px;
+        top: 170px;
+        transform: rotate(-7deg);
+    }
+
+    .p5 {
+        left: 35px;
+        top: 300px;
+        transform: rotate(8deg);
+    }
+
+    .p6 {
+        right: 35px;
+        top: 310px;
+        transform: rotate(-9deg);
+    }
+}
