@@ -370,23 +370,35 @@ button:hover {
 @media (max-width: 600px) {
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .container {
+        position: relative;
         width: 100%;
-        max-width: 100%;
-        padding: 0 10px;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
     }
 
-    /* Sobre */
+    /* =========================
+       SOBRE
+       ========================= */
+
     .envelope {
+        position: relative;
         width: 280px;
         height: 180px;
         margin: 0 auto 35px;
+        left: 0;
     }
 
-    /* Carta cerrada */
+    /* =========================
+       CARTA CERRADA
+       ========================= */
+
     .letter {
         width: 250px;
         height: 160px;
@@ -395,125 +407,149 @@ button:hover {
         padding: 20px;
     }
 
-    /* Carta abierta */
+    /* =========================
+       CARTA ABIERTA
+       ========================= */
+
     .envelope.open .letter {
-        width: 270px;
-        height: 480px;
-        left: 5px;
-        top: -305px;
+        width: 280px;
+        height: 600px;
+        left: 0;
+        top: -415px;
         transform: none;
-        padding: 22px;
-        z-index: 10;
+        padding: 25px;
+        z-index: 20;
     }
 
-    /* Ocultar contenido mientras está cerrada */
+    /* =========================
+       CONTENIDO DE LA CARTA
+       ========================= */
+
     .letter-content {
         opacity: 0;
         transition: opacity .5s ease;
     }
 
-    /* Mostrar contenido al abrir */
     .envelope.open .letter-content {
         opacity: 1;
         transition-delay: .7s;
     }
 
-    /* Título */
     .letter h2 {
         font-size: 18px;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
+        text-align: center;
     }
 
-    /* Texto */
     .letter p {
         font-size: 13px;
         line-height: 1.55;
+        text-align: center;
         white-space: pre-line;
     }
 
-    /* Corazones superiores */
-    .hearts {
-        height: 80px;
+    /* =========================
+       POLAROIDS
+       ========================= */
+
+    .polaroids {
+        position: absolute;
+        width: 100%;
+        height: 520px;
+        top: 0;
+        left: 0;
+        transform: none;
+        z-index: 2;
+        pointer-events: none;
     }
 
-    .hearts span {
-        font-size: 42px;
+    .polaroid {
+        width: 72px;
+        height: 94px;
+        padding: 5px 5px 15px;
+        box-shadow: 0 5px 14px rgba(0,0,0,.18);
+        z-index: 2;
     }
 
-    .hearts span:nth-child(1) {
-        left: 28%;
+    .polaroid img {
+        width: 100%;
+        height: 73px;
+        object-fit: cover;
     }
 
-    .hearts span:nth-child(2) {
-        left: 43%;
-        font-size: 55px;
+    /* Foto arriba izquierda */
+    .p1 {
+        left: 0;
+        top: 25px;
+        transform: rotate(-9deg);
     }
 
-    .hearts span:nth-child(3) {
-        left: 58%;
+    /* Foto arriba derecha */
+    .p2 {
+        right: 0;
+        top: 20px;
+        transform: rotate(9deg);
     }
 
-    /* Botones */
+    /* Foto izquierda */
+    .p3 {
+        left: -3px;
+        top: 205px;
+        transform: rotate(7deg);
+    }
+
+    /* Foto derecha */
+    .p4 {
+        right: -3px;
+        top: 215px;
+        transform: rotate(-7deg);
+    }
+
+    /* Foto abajo izquierda */
+    .p5 {
+        left: 15px;
+        top: 390px;
+        transform: rotate(8deg);
+    }
+
+    /* Foto abajo derecha */
+    .p6 {
+        right: 15px;
+        top: 400px;
+        transform: rotate(-8deg);
+    }
+
+    /* =========================
+       BOTONES
+       ========================= */
+
     .buttons {
-        gap: 10px;
+        position: relative;
+        z-index: 30;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin-top: 10px;
     }
 
     button {
         width: 85px;
-        height: 34px;
+        height: 35px;
         font-size: 12px;
     }
+}
 
-    /* Polaroids */
-    .polaroids {
-        width: 100%;
-        height: 430px;
-        top: 25px;
-    }
+.envelope {
+    position: relative;
+    z-index: 10;
+}
 
-    .polaroid {
-        width: 85px;
-        height: 108px;
-        padding: 6px 6px 18px;
-    }
+.polaroids {
+    z-index: 2;
+}
 
-    .polaroid img {
-        height: 84px;
-    }
-
-    .p1 {
-        left: 5px;
-        top: 10px;
-        transform: rotate(-10deg);
-    }
-
-    .p2 {
-        right: 5px;
-        top: 5px;
-        transform: rotate(9deg);
-    }
-
-    .p3 {
-        left: -2px;
-        top: 160px;
-        transform: rotate(6deg);
-    }
-
-    .p4 {
-        right: -2px;
-        top: 170px;
-        transform: rotate(-7deg);
-    }
-
-    .p5 {
-        left: 35px;
-        top: 300px;
-        transform: rotate(8deg);
-    }
-
-    .p6 {
-        right: 35px;
-        top: 310px;
-        transform: rotate(-9deg);
-    }
+.envelope.open .letter {
+    z-index: 20;
 }
